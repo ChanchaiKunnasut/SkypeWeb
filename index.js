@@ -22,24 +22,24 @@ $(function () {
     var Application
     var client;
     var conversation;
-
+    log('before Skype.initialize');
     Skype.initialize({
-        //apiKey: 'SWX-BUILD-SDK',
+        //apiKey: 'SWX-BUILD-SDK',---------------
         apiKey: 'a42fcebd-5b43-4b89-a065-74450fb91255'
     }, function (api) {
-        Application = api.application;
-        client = new Application;
+        //console.log(api);
+        client = new api.application;
+        log("Client Created");
     }, function (err) {
         log('some error occurred: ' + err);
     });
-
-    log("Client Created");
 
     // when the user clicks the "Sign In" button
     $('#signin').click(function () {
         $('#signin').hide();
         log('Signing in...');
         // and invoke its asynchronous "signIn" method
+        console.log(client);
         client.signInManager.signIn({
             version: 'sdk-samples/1.0.0',
             username: 'chanchai_kunnasut@hotmail.co.th',//$('#address').text(),
